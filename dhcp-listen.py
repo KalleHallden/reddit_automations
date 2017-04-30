@@ -1,8 +1,15 @@
 import subprocess
 from datetime import datetime, timedelta
 
-#pip install scapy
-from scapy.all import sniff, Ether, DHCP
+# pip install scapy
+# Also needs dnet: https://pypi.python.org/pypi/dnet
+try:
+	from scapy.all import sniff, Ether, DHCP
+except:
+	print "Needs Scapy library."
+	print "pip install scapy"
+	print "Scapy needs dnet: https://pypi.python.org/pypi/dnet"
+	exit()
 
 #Set your interface
 interface="en0"
@@ -11,11 +18,12 @@ alert_delay = timedelta(hours=2)
 #Enter either the hostname or the MAC address
 #  as the Key and the Phonetic name as the value to be heard.
 #  Otherwise the hostname will try to be spoken
-friendly_names = {"PersonOne-iPhone": "Person One",
-		"aa:bb:cc:dd:ee:ff": "Person Two",
-		}
+friendly_names = {
+	"PersonOne-iPhone": "Person One",
+	"aa:bb:cc:dd:ee:ff": "Person Two",
+	}
 
-########### Main Code
+###########
 class Device():
 	def __init__(self,name="",mac=""):
 		self.name = name
@@ -31,11 +39,12 @@ def new_join_action():
 	""" 
 	subprocess.Popen(["say",say_string])
 
+print "Listening on interface {}".format(interface)
 
 while True:
 	current_time = datetime.now()
 	#listen on the interface for DHCP traffic
-	a = sniff(iface=interface, filter="port 67", count = 1)
+	a = sniff(iface=interface, filter="port 67 or port 68", count = 1)
 	hostname = "Unknown"
 	mac_address = a[Ether][0].src
 
