@@ -11,8 +11,8 @@ alert_delay = timedelta(hours=2)
 #Enter either the hostname or the MAC address
 #  as the Key and the Phonetic name as the value to be heard.
 #  Otherwise the hostname will try to be spoken
-friendly_names = {"Persons-iPhone":"Person One",
-				"aa:bb:cc:dd:ee:ff":"Person Two",
+friendly_names = {"XaQs-iPhone":"Zack",
+				"64:b0:a6:aa:13:91":"Megan",
 				}
 
 ###########
@@ -65,5 +65,5 @@ while True:
 	say_string =  "{}. has joined".format(say_hostname,hardware)
 	print "{}: {} ({}) has joined".format(current_time,device.name,device.mac)
 	if current_time > device.last_seen + alert_delay:
-		device.last_seen = current_time
 		new_join_action()
+	device.last_seen = current_time
