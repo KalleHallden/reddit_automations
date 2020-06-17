@@ -15,4 +15,4 @@ while True:
   connected_ip = line.decode('utf-8').split()[3]
 
   if connected_ip == IP_DEVICE:
-      subprocess.Popen(["say", "Kalle just connected to the network"])
+      subprocess.Popen(["say", "Linnea just connected to the network"])
