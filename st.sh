@@ -1,2 +1,2 @@
-nohup python3 projects/intruder_alert/app.py &
+nohup python3 path_to_file/intruder_alert/app.py &
 
