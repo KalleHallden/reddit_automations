@@ -15,9 +15,9 @@ IP_IPHONE = config("IP_IPHONE")
 IP_LAPTOP = config("IP_LAPTOP")
 IP_RANGE = config("IP_RANGE")
 
-family = {"192.168.0.100":"Krishna","192.168.0.104":"Papa"}
+family = {"your_ip":"brother","mother":"father"}
 
-while_list = ["192.168.0.1",IP_LAPTOP]
+while_list = ["your_ip",IP_LAPTOP]
 
 nm = nmap.PortScanner()
 showed = False
